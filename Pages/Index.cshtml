@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Historic Windmill Puzzle</h5>
                     <p class="card-text">2D puslespil - Færdiggør dem alle!  </p>
-                    <a href="#" class="btn btn-primary">Spil Nu</a>
+                    <button onclick="loadGame('https://shorturl.at/rzY38')" class="btn btn-primary">Spil Nu</button>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Windmill Dash</h5>
                     <p class="card-text">3D Vindmølle Spil. Hvor længe kan du overleve?!</p>
-                    <a href="#" class="btn btn-primary">Spil Nu</a>
+                    <button onclick="loadGame('https://shorturl.at/eglmv')" class="btn btn-primary">Spil Nu</button>
                 </div>
             </div>
         </div>
@@ -43,5 +43,9 @@
         <!-- Repeat game tiles as in the Featured Games Section -->
     </div>
 
+    <!-- IFrame Container (could be a modal or a dedicated section) -->
+    <div id="gameContainer" style="display:none;">
+        <iframe id="gameFrame" style="width:960px;height:600px" frameborder="0"></iframe>
+    </div>
     <!-- Add more sections as needed -->
 </div>
