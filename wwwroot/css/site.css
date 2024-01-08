@@ -1,0 +1,137 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    background-color: #121212; /* Dark background for the whole page */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #3498db; /* Bright blue for focus highlight */
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: inherit;
+    color: #c0c0c0; /* Light gray text color for readability */
+}
+
+.main-header {
+    background-color: #1a1c2c; /* Slightly lighter dark gray for the header */
+    border-bottom: 1px solid #262a3f; /* Subtle border color for the header */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    color: #ffffff;
+    
+}
+.navbar-light {
+    color: #ffffff;
+
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff; /* White color for the brand to stand out */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #c0c0c0; /* Light gray for nav links to ensure they are readable */
+}
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #ffffff; /* White for hover state for contrast */
+    }
+
+/* Cards */
+.card {
+    background-color: #1e2130; /* Card background */
+    color: #dcdcdc; /* Text color for cards */
+}
+
+    .card .btn {
+        background-color: #3498db; /* Bright blue for buttons */
+        color: #ffffff; /* White text on buttons for contrast */
+    }
+
+        .card .btn:hover {
+            background-color: #278ad2; /* Slightly darker blue on hover */
+        }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .main-header {
+        /* Adjustments for smaller screens */
+    }
+}
+/* Footer */
+.same-color-background {
+    background-color: #1a1c2c; /* Match the header's background color */
+}
+
+/* Index Styles*/
+.featured-display {
+    color: white;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.new-games {
+    color: white;
+    font-weight: 400;
+}
+.card {
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the transform property */
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Slightly increase the size of the card on hover */
+    }
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards in a row are the same height */
+}
+
+.card-img-top {
+    height: auto;
+    max-height: 180px; /* Maximum image height */
+    object-fit: cover; /* Ensures images cover the area nicely */
+}
+
+.card-body {
+    flex: 1; /* Allows card body to expand and fill the space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    min-height: 3em; /* Minimum height for title */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds an ellipsis to text that is too long */
+}
+
+.card-text {
+    min-height: 3em; /* Minimum height for text */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds an ellipsis to text that is too long */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .card-img-top {
+        max-height: 135px; /* Smaller maximum height for smaller screens */
+    }
+
+    .card-title, .card-text {
+        min-height: auto; /* Allow the text to flow naturally on smaller screens */
+    }
+}
+
+

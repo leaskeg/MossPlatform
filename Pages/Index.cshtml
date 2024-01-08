@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Forside";
+}
+
+<div class="container mt-3">
+    <!-- Featured Games Section -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <h2 class="featured-display">Featured Games</h2>
+        </div>
+        <!-- Game 1 -->
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="~/css/Resources/Images/1.png" alt="Game Image">
+                <div class="card-body">
+                    <h5 class="card-title">Historic Windmill Puzzle</h5>
+                    <p class="card-text">2D puslespil - Færdiggør dem alle!  </p>
+                    <a href="#" class="btn btn-primary">Spil Nu</a>
+                </div>
+            </div>
+        </div>
+        <!-- Game 2 -->
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="~/css/Resources/Images/2.png" alt="Game Image">
+                <div class="card-body">
+                    <h5 class="card-title">Windmill Dash</h5>
+                    <p class="card-text">3D Vindmølle Spil. Hvor længe kan du overleve?!</p>
+                    <a href="#" class="btn btn-primary">Spil Nu</a>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat the above block for each game -->
+    </div>
+
+    <!-- New Games Section -->
+    <div class="row mb-3 new-games">
+        <div class="col-12">
+            <h3>New Games</h3>
+        </div>
+        <!-- Repeat game tiles as in the Featured Games Section -->
+    </div>
+
+    <!-- Add more sections as needed -->
+</div>
