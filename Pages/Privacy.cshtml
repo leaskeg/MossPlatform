@@ -1,8 +1,16 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+}
+
+<div style="padding-top: 40px;">
+    @if (!string.IsNullOrEmpty(Model.GameUrl))
+    {
+        <iframe src="@Model.GameUrl" style="width:960px; height:600px;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+    }
+    else
+    {
+        <p>Her kan spil loades når brugeren trykker på dem på forsiden.</p>
+    }
+</div>

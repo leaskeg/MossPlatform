@@ -2,7 +2,6 @@ html {
     font-size: 14px;
     position: relative;
     min-height: 100%;
-    background-color: #121212; /* Dark background for the whole page */
 }
 
 @media (min-width: 768px) {
@@ -15,11 +14,7 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #3498db; /* Bright blue for focus highlight */
 }
 
-body {
-    margin-bottom: 60px;
-    background-color: inherit;
-    color: #c0c0c0; /* Light gray text color for readability */
-}
+
 
 .main-header {
     background-color: #1a1c2c; /* Slightly lighter dark gray for the header */
@@ -27,16 +22,30 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-nav {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem; /* Example size, adjust as needed */
+}
+
 .nav-item {
     color: #ffffff;
-    
+    font-weight: bold;
+    margin-right: 1rem;
+    margin-left: 3rem;
 }
 .navbar-light {
     color: #ffffff;
 
 }
+.nav-link {
+    color: #c0c0c0; /* Light gray for nav links to ensure they are readable */
+    padding: 0.5rem 1rem; /* Add padding to increase the clickable area */
+}
 .navbar-brand {
+    font-family: 'Open Sans', sans-serif; /* Ensure this matches your nav-items */
+    font-size: 1.25rem; /* Slightly larger size for brand/logo */
     font-weight: bold;
+    margin-right: 2rem;
     color: #ffffff; /* White color for the brand to stand out */
 }
 
@@ -77,14 +86,11 @@ body {
 /* Index Styles*/
 .featured-display {
     color: white;
+    margin-bottom: 20px;
     font-size: 40px;
     font-weight: 400;
 }
 
-.new-games {
-    color: white;
-    font-weight: 400;
-}
 .card {
     transition: transform 0.3s ease-in-out; /* Smooth transition for the transform property */
 }
@@ -99,6 +105,10 @@ body {
     height: 100%; /* Ensures all cards in a row are the same height */
 }
 
+#theme-toggle {
+    padding: 0.5rem 1rem;
+    margin-left: 3rem; 
+}
 .card-img-top {
     height: auto;
     max-height: 180px; /* Maximum image height */
@@ -134,4 +144,119 @@ body {
     }
 }
 
+/* Dark mode section */
+body.dark-mode {
+    background-color: #212529; /* Dark background color for the whole page in dark mode */
+    color: #ffffff; /* White text color for readability in dark mode */
+}
+body.dark-mode .featured-display,
+body.dark-mode .new-games h3 {
+    color: #ffffff; /* White text in dark mode */
+}
+
+.dark-mode #theme-toggle {
+    color: #ffffff; /* or any other color that stands out on dark background */
+
+}
+
+.dark-mode #theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for the button */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for the button */
+}
+
+
+.dark-mode .card {
+    color: white;
+    border-color: white;
+}
+.dark-mode .navbar {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+.dark-mode .navbar-nav .nav-link {
+    color: #ffffff; /* Set text color to white */
+}
+
+.dark-mode .footer {
+    background-color: #212529;
+    color: #ffffff;
+}
+
+/* Add other dark mode styles as needed */
+
+/* Light mode section */
+body.light-mode .featured-display,
+body.light-mode .new-games h3 {
+    color: #212529; /* Black text in light mode */
+}
+
+.light-mode .navbar,
+.light-mode .footer,
+.light-mode .same-color-background {
+    background-color: #ffffff; /* White background for navbar and footer */
+    color: #212529; /* Black text color for navbar and footer */
+}
+
+.light-mode .navbar-brand,
+.light-mode .navbar-nav .nav-link,
+.light-mode .nav-item {
+    color: #212529; /* Black text color for better contrast */
+}
+
+.light-mode .card {
+    background-color: #ffffff; /* White background for cards */
+    color: #212529; /* Dark text for cards for better contrast */
+    border-color: black;
+}
+
+.light-mode .btn {
+    background-color: #3498db; /* Keep the button blue for accessibility */
+    color: #ffffff; /* White text on buttons for contrast */
+}
+
+/* Light mode section */
+.light-mode .navbar-nav .nav-link:hover {
+    color: #3498DB; /* Change to your preferred shade of blue */
+}
+
+
+/* Light mode section */
+.light-mode .navbar-toggler {
+    color: #333; /* Dark color for the toggler icon */
+    border-color: #333; /* Dark color for the toggler border if needed */
+}
+
+.light-mode .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+/* Ensure that the link colors within the card also have contrast */
+.light-mode .card .btn {
+    color: #ffffff;
+}
+
+    .light-mode .card .btn:hover {
+        background-color: #278ad2; /* Slightly darker blue on hover */
+    }
+
+
+/* Add other light mode styles as needed */
+
+
+/* Navbar logo */
+
+.navbar-logo {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Height will scale proportionally */
+    display: block; /* To prevent inline default spacing */
+}
+
+/* Alternatively, if you want to set a maximum size and keep the logo responsive */
+.navbar-logo {
+    max-width: 100px; /* Adjust max-width as needed */
+    height: auto; /* Height will scale proportionally */
+    display: block; /* To prevent inline default spacing */
+}
 

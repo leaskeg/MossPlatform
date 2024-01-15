@@ -12,8 +12,11 @@ namespace MossPlatform.Pages
             _logger = logger;
         }
 
+        public string GameUrl { get; set; }
+
         public void OnGet()
         {
+            GameUrl = Request.Query["gameUrl"];
         }
     }
 }
