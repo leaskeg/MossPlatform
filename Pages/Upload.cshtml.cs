@@ -16,7 +16,7 @@ namespace MossPlatform.Pages
         }
 
         [BindProperty]
-        public Game NewGame { get; set; }
+        public Game NewGame { get; set; } = new Game();
 
         public async Task<IActionResult> OnPostAsync()
         {

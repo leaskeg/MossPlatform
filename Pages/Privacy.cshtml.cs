@@ -5,14 +5,7 @@ namespace MossPlatform.Pages
 {
     public class PrivacyModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
-
-        public PrivacyModel(ILogger<PrivacyModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public string GameUrl { get; set; }
+        public string? GameUrl { get; set; }
 
         public void OnGet()
         {

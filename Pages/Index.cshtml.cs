@@ -16,7 +16,7 @@ namespace MossPlatform.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IWebHostEnvironment _env;
 
-        public List<Game> Games { get; set; }
+        public List<Game>? Games { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IWebHostEnvironment env)
         {
