@@ -2,12 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MossPlatform.Models;
 using System.Text.Json;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System;
+using System.Text.Json.Serialization;
 
 namespace MossPlatform.Pages
 {
@@ -30,8 +25,16 @@ namespace MossPlatform.Pages
             if (System.IO.File.Exists(filePath))
             {
                 var jsonData = await System.IO.File.ReadAllTextAsync(filePath);
-                Games = JsonSerializer.Deserialize<List<Game>>(jsonData) ?? new List<Game>();
-                _logger.LogInformation("Loaded {GameCount} games.", Games.Count);
+
+                // Add JsonSerializerOptions with JsonStringEnumConverter
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new JsonStringEnumConverter() }
+                };
+                var gamesList = JsonSerializer.Deserialize<List<Game>>(jsonData, options);
+
+                Games = JsonSerializer.Deserialize<List<Game>>(jsonData, options) ?? new List<Game>();
+                _logger.LogInformation("Loaded {GameCount} games.", Games?.Count ?? 0);
             }
             else
             {

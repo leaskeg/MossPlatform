@@ -1,58 +1,58 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MossPlatform.Models;
-using System.Text.Json;
 
 namespace MossPlatform.Pages
 {
     public class UploadModel : PageModel
     {
+        private readonly GameDataService _gameDataService;
+        private readonly ImageService _imageService;
+        private readonly ILogger<UploadModel> _logger;
 
-        private readonly IWebHostEnvironment _env; // Declare the private field
-
-        public UploadModel(IWebHostEnvironment env) // Inject through constructor
+        public UploadModel(GameDataService gameDataService, ImageService imageService, ILogger<UploadModel> logger)
         {
-            _env = env; // Assign to the private field
+            _gameDataService = gameDataService;
+            _imageService = imageService;
+            _logger = logger;
         }
 
         [BindProperty]
         public Game NewGame { get; set; } = new Game();
 
+        [BindProperty]
+        public IFormFile UploadedImage { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (UploadedImage != null && UploadedImage.Length > 0)
             {
-                return Page();
-            }
-
-            // Set the Category property based on the form input
-            NewGame.Category = Request.Form["Category"].ToString();
-
-            var filePath = Path.Combine(_env.ContentRootPath, "path_to_your_games.json");
-
-            List<Game> games;
-            // Read the existing games
-            if (System.IO.File.Exists(filePath))
-            {
-                var jsonData = await System.IO.File.ReadAllTextAsync(filePath);
-                games = JsonSerializer.Deserialize<List<Game>>(jsonData) ?? new List<Game>();
+                // Utilize your existing ImageService to save the uploaded image and get the relative path
+                NewGame.ImageUrl = await _imageService.SaveImageAsync(UploadedImage, NewGame.Title);
             }
             else
             {
-                games = new List<Game>();
+                // Handle the case where no image is uploaded, if necessary
+                _logger.LogWarning("No image uploaded for game: {Title}", NewGame.Title);
             }
 
-            // Add the new game
-            games.Add(NewGame); // NewGame already has an Id due to the default in the model
+            // Assuming NewGame already has Title, Description, Category, and PlayUrl set from form data due to [BindProperty]
+            try
+            {
+                var games = await _gameDataService.GetGamesAsync();
+                games.Add(NewGame);
+                await _gameDataService.SaveGamesAsync(games);
+                _logger.LogInformation("New game added: {Title}", NewGame.Title);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding game: {Title}", NewGame.Title);
+                // Optionally return to the page with an error message
+                ModelState.AddModelError(string.Empty, "An error occurred saving the game");
+                return Page();
+            }
 
-            // Serialize and write the updated list to the file
-            var updatedJsonData = JsonSerializer.Serialize(games, new JsonSerializerOptions { WriteIndented = true });
-            await System.IO.File.WriteAllTextAsync(filePath, updatedJsonData);
-
-            return RedirectToPage("/Index");
+            return RedirectToPage("./Index");
         }
-
-
     }
-
 }

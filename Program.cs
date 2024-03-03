@@ -1,6 +1,5 @@
-using System.IO;
-using System.Text.Json;
 using System.Security.Cryptography;
+using System.Text.Json;
 
 namespace MossPlatform
 {
@@ -12,7 +11,8 @@ namespace MossPlatform
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-
+            builder.Services.AddScoped<GameDataService>();
+            builder.Services.AddScoped<ImageService>();
             // Register session services before building the app
             builder.Services.AddSession(options =>
             {

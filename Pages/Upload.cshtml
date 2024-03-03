@@ -3,25 +3,17 @@
 @{
 }
 
-<form method="post">
-    <div class="form-group">
-        <label for="Title">Title</label>
-        <input type="text" class="form-control" id="Title" name="Title" required>
-    </div>
-    <div class="form-group">
-        <label for="Description">Description</label>
-        <textarea class="form-control" id="Description" name="Description" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="Link">Game Link</label>
-        <input type="text" class="form-control" id="Link" name="Link" required>
-    </div>
-    <div class="form-group">
-        <label for="Category">Category</label>
-        <select class="form-control" id="Category" name="Category">
-            <option value="featured">Featured</option>
-            <option value="new">New</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form method="post" enctype="multipart/form-data">
+    <input type="text" name="title" required placeholder="Title" />
+    <input type="text" name="description" placeholder="Description" />
+    <select name="category">
+        <option value="Featured">Featured</option>
+        <option value="New">New</option>
+        <!-- Add more categories as needed -->
+    </select>
+    <input type="file" name="gameImage" accept="image/*" />
+    <input type="text" name="playUrl" required placeholder="Play URL" />
+    <button type="submit">Upload Game</button>
 </form>
+
+
