@@ -3,11 +3,11 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
-    bool isAdmin = User.IsInRole("Admin"); // Assuming you have role-based authorization
+    bool isAdmin = User.IsInRole("Admin");
 }
-
+<!-- Featured games section-->
 <div class="container mt-5">
-    <h2>Featured Games</h2>
+    <h2>Udvalgte spil</h2>
     <div class="row">
         @foreach (var game in Model.Games.Where(g => g.CategoryEnum == GameCategory.Featured))
         {
@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@game.Title</h5>
                         <p class="card-text">@game.Description</p>
-                        <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Play Now</a>
+                        <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
                         @if (isAdmin)
                         {
                             <form method="post" asp-page-handler="Delete" asp-route-id="@game.Id">
@@ -30,13 +30,27 @@
             </div>
         }
     </div>
-
-    <h2 class="mt-5">Newest Games</h2>
+    <!-- New Game Section-->
+    <h2>Nye spil</h2>
     <div class="row">
         @foreach (var game in Model.Games.Where(g => g.CategoryEnum == GameCategory.New))
         {
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <!-- Similar card structure for Newest Games, including Delete and Edit if isAdmin -->
+                <div class="card h-100">
+                    <img class="card-img-top" src="@game.ImageUrl" alt="@game.Title">
+                    <div class="card-body">
+                        <h5 class="card-title">@game.Title</h5>
+                        <p class="card-text">@game.Description</p>
+                        <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
+                        @if (isAdmin)
+                        {
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@game.Id">
+                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            </form>
+                            <a href="@Url.Page("Edit", new { id = game.Id })" class="btn btn-secondary mt-2">Edit</a>
+                        }
+                    </div>
+                </div>
             </div>
         }
     </div>
