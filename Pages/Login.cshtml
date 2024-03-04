@@ -18,14 +18,14 @@
     <div class="container">
         <div class="wrapper">
             <div class="title"><span>Log ind</span></div>
-            <form action="#">
+            <form method="post">
                 <div class="row">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Email" required>
+                    <input type="text" asp-for="Input.Username" placeholder="Username" required>
                 </div>
                 <div class="row">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" asp-for="Input.Password" placeholder="Password" required>
                 </div>
                 <div class="row button">
                     <input type="submit" value="Log ind">

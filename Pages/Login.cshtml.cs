@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text.Json;
-using System.IO;
 
 namespace MossPlatform.Pages
 {
@@ -35,13 +33,20 @@ namespace MossPlatform.Pages
             string jsonCredentials = await System.IO.File.ReadAllTextAsync("admin_credentials.json");
             var adminCredentials = JsonSerializer.Deserialize<AdminCredentials>(jsonCredentials);
 
+            // Ensure adminCredentials is not null
+            if (adminCredentials == null)
+            {
+                Message = "Server error. Please try again later.";
+                return Page(); // You might want to log this condition as well.
+            }
+
             using var sha256 = SHA256.Create();
             var hashedPasswordBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Input.Password));
             string hashedPassword = BitConverter.ToString(hashedPasswordBytes).Replace("-", "").ToLowerInvariant();
 
             if (adminCredentials.Username == Input.Username && adminCredentials.PasswordHash == hashedPassword)
             {
-                HttpContext.Session.SetString("IsAdminLoggedIn", "true"); // Setting the session variable
+                HttpContext.Session.SetString("IsAdminLoggedIn", "true"); // Consider using standard authentication mechanisms instead
                 return RedirectToPage("/Index");
             }
             else
@@ -50,8 +55,8 @@ namespace MossPlatform.Pages
                 Message = "Invalid login attempt.";
                 return Page();
             }
-
         }
+
 
         private class AdminCredentials
         {

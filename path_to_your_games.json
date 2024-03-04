@@ -5,7 +5,25 @@
     "Description": "Et sjovt 3D spil hvor du skal se hvor langt du kan komme!",
     "Category": "featured",
     "CategoryEnum": 0,
-    "ImageUrl": "https://tr.rbxcdn.com/f30a332af327ff6f803ac090a5d0038f/500/280/Image/Jpeg",
+    "ImageUrl": null,
     "PlayUrl": null
+  },
+  {
+    "Id": "787ba9c7-ea3c-405c-b49a-a395a0038315",
+    "Title": "test",
+    "Description": "test",
+    "Category": "New",
+    "CategoryEnum": 0,
+    "ImageUrl": "/uploads/test_1709589487.png",
+    "PlayUrl": "2332"
+  },
+  {
+    "Id": "039c808c-647c-48c4-a7f0-15f7c0eceff9",
+    "Title": "Ida Plays",
+    "Description": "Game Game Game",
+    "Category": "New",
+    "CategoryEnum": 0,
+    "ImageUrl": "/uploads/Ida_Plays_1709589568.jpg",
+    "PlayUrl": "ealea"
   }
 ]
