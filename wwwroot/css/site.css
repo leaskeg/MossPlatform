@@ -64,12 +64,13 @@ html {
 }
 
     .card .btn {
-        background-color: #3498db; /* Bright blue for buttons */
+        background-color: #84894A; /* Bright blue for buttons */
         color: #ffffff; /* White text on buttons for contrast */
+        border-color: lightgrey;
     }
 
         .card .btn:hover {
-            background-color: #278ad2; /* Slightly darker blue on hover */
+            background-color: #5d612c; /* Slightly darker blue on hover */
         }
 
 /* Media query for smaller screens */
@@ -211,13 +212,13 @@ body.light-mode .new-games h3 {
 }
 
 .light-mode .btn {
-    background-color: #3498db; /* Keep the button blue for accessibility */
+    background-color: #84894A; /* Keep the button blue for accessibility */
     color: #ffffff; /* White text on buttons for contrast */
 }
 
 /* Light mode section */
 .light-mode .navbar-nav .nav-link:hover {
-    color: #3498DB; /* Change to your preferred shade of blue */
+    color: #5d612c; /* Change to your preferred shade of blue */
 }
 
 
@@ -238,7 +239,7 @@ body.light-mode .new-games h3 {
 }
 
     .light-mode .card .btn:hover {
-        background-color: #278ad2; /* Slightly darker blue on hover */
+        background-color: #5d612c; /* Slightly darker blue on hover */
     }
 
 

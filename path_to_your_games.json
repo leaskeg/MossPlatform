@@ -5,43 +5,7 @@
     "Description": "Et sjovt 3D spil hvor du skal se hvor langt du kan komme!",
     "Category": "featured",
     "CategoryEnum": 0,
-    "ImageUrl": null,
+    "ImageUrl": "https://tr.rbxcdn.com/f30a332af327ff6f803ac090a5d0038f/500/280/Image/Jpeg",
     "PlayUrl": null
-  },
-  {
-    "Id": "16a43b84-805e-4cd4-b6b3-309a1efaf0d8",
-    "Title": "eaeaea",
-    "Description": "eaeaea",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": "eaeae",
-    "PlayUrl": "eae"
-  },
-  {
-    "Id": "12eb6ba8-6193-42ca-97db-56011d8d8b69",
-    "Title": "woop",
-    "Description": "rsrsrs",
-    "Category": "New",
-    "CategoryEnum": 0,
-    "ImageUrl": null,
-    "PlayUrl": "eaea"
-  },
-  {
-    "Id": "5cbb7c5c-1a6b-448b-8417-4065bae41a57",
-    "Title": "test",
-    "Description": "test",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": null,
-    "PlayUrl": "ea"
-  },
-  {
-    "Id": "5636da23-6789-4745-b9e9-1c3381ef94fc",
-    "Title": "242",
-    "Description": "241421",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": null,
-    "PlayUrl": "241421"
   }
 ]

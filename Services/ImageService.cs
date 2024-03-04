@@ -1,20 +1,30 @@
 ﻿public class ImageService
 {
-    private readonly IWebHostEnvironment _env;
-    private readonly ILogger<ImageService> _logger; // Assuming you inject a logger
 
+    //Private Fields
+    private readonly IWebHostEnvironment _env;
+    private readonly ILogger<ImageService> _logger;
+
+    //Construtor
     public ImageService(IWebHostEnvironment env, ILogger<ImageService> logger)
     {
         _env = env;
         _logger = logger;
     }
 
+    //Saving Image Async.
     public async Task<string> SaveImageAsync(IFormFile uploadedImage, string title)
     {
         // Validate file size and type
         const long maxFileSize = 5_000_000; // 5 MB
-        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png"};
         var fileExtension = Path.GetExtension(uploadedImage.FileName).ToLower();
+        var sanitizedTitle = SanitizeFileName(title);
+        var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        var fileName = $"{sanitizedTitle}_{timestamp}{fileExtension}";
+        var directoryPath = Path.Combine(_env.WebRootPath, "uploads");
+        var filePath = Path.Combine(directoryPath, fileName);
+
 
         if (!allowedExtensions.Contains(fileExtension))
         {
@@ -26,17 +36,12 @@
             throw new InvalidOperationException("File size exceeds the limit.");
         }
 
-        var sanitizedTitle = SanitizeFileName(title);
-        var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        var fileName = $"{sanitizedTitle}_{timestamp}{fileExtension}";
-        var directoryPath = Path.Combine(_env.WebRootPath, "uploads");
 
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
 
-        var filePath = Path.Combine(directoryPath, fileName);
 
         try
         {

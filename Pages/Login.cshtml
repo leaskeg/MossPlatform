@@ -3,17 +3,36 @@
 @{
     ViewData["Title"] = "Admin Login";
 }
-
-<h1>@ViewData["Title"]]</h1>
-
-<form method="post">
-    <div class="form-group">
-        <label for="Username">Username</label>
-        <input type="text" class="form-control" id="Username" name="Username" required>
+<br />
+<br />
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Login Form</span></div>
+            <form action="#">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Email" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="row button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="Password">Password</label>
-        <input type="password" class="form-control" id="Password" name="Password" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+
+</body>
+</html>
