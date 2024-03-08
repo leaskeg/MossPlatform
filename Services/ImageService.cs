@@ -17,7 +17,7 @@
     {
         // Validate file size and type
         const long maxFileSize = 5_000_000; // 5 MB
-        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png"};
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
         var fileExtension = Path.GetExtension(uploadedImage.FileName).ToLower();
         var sanitizedTitle = SanitizeFileName(title);
         var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -41,7 +41,6 @@
         {
             Directory.CreateDirectory(directoryPath);
         }
-
 
         try
         {

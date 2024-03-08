@@ -57,7 +57,6 @@ namespace MossPlatform.Pages
             }
         }
 
-
         private class AdminCredentials
         {
             public string Username { get; set; }

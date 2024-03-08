@@ -9,7 +9,7 @@ public class GameDataService
     public GameDataService(IWebHostEnvironment env)
     {
         _env = env;
-        _filePath = Path.Combine(_env.ContentRootPath, "path_to_your_games.json");
+        _filePath = Path.Combine(_env.ContentRootPath, "game-list.json");
     }
 
     public async Task<List<Game>> GetGamesAsync()
