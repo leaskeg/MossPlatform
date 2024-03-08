@@ -1,40 +1,51 @@
 ﻿@page // This line indicates that this is an ASP.NET Core Razor Page
 @model MossPlatform.Pages.UploadModel // The model for this page is of type UploadModel
+<head>
+    <link rel="stylesheet" href="~/css/uploadpage.css" />
+    <script>
+        (function () {
+            // Immediately set the theme based on user preference
+            const theme = localStorage.getItem('theme') || 'light-mode'; // Default to light mode
+            document.body.className = theme;
 
-<link rel="stylesheet" href="~/css/uploadpage.css" />
+            // Hide body to prevent FOUC
+            document.body.style.display = 'none';
+        })();
+    </script>
+</head>
 
 <div class="upload-form-container">
-   <form method="post" enctype="multipart/form-data" class="upload-form">
-       <!-- The 'form-group' divs are used for styling and organizing form elements -->
-       <div class="form-group">
-           <label for="title">Title</label> // Label for the title input field
-           <input type="text" id="title" name="title" required placeholder="Enter title here" class="form-control" />
-           <!-- Input field for the game title, required, and has a placeholder text -->
-       </div>
-       <div class="form-group">
-           <label for="description">Description</label> // Label for the description textarea
-           <textarea id="description" name="description" placeholder="Enter description here" class="form-control"></textarea>
-           <!-- Textarea for the game description, has a placeholder text -->
-       </div>
-       <div class="form-group">
-           <label for="category">Category</label> // Label for the category select element
-           <select id="category" name="category" class="form-control">
-               <option value="Featured">Featured</option> // Option for the 'Featured' category
-               <option value="New">New</option> // Option for the 'New' category
-               <!-- Add more categories as needed -->
-           </select>
-           <!-- Select element for choosing a category for the game -->
-       </div>
-       <div class="form-group">
-           <label for="UploadedImage">Upload Image</label> // Label for the image upload input field
-           <input type="file" id="UploadedImage" name="UploadedImage" accept="image/*" class="form-control-file" />
-           <!-- Input field for uploading a game image, accepts image files only -->
-       </div>
-       <div class="form-group">
-           <label for="playUrl">Play URL</label> // Label for the play URL input field
-           <input type="text" id="playUrl" name="playUrl" required placeholder="Enter play URL here" class="form-control" />
-           <!-- Input field for the play URL, required, and has a placeholder text -->
-       </div>
-       <button type="submit" class="btn btn-primary">Upload Game</button> // Button to submit the form and upload the game
-   </form>
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        <!-- The 'form-group' divs are used for styling and organizing form elements -->
+        <div class="form-group">
+            <label for="title">Titel</label>
+            <input type="text" id="title" name="title" required placeholder="Skriv titel her" class="form-control" />
+            <!-- Input field for the game title, required, and has a placeholder text -->
+        </div>
+        <div class="form-group">
+            <label for="description">Beskrivelse</label>
+            <textarea id="description" name="description" placeholder="Skriv beskrivelse her" class="form-control"></textarea>
+            <!-- Textarea for the game description, has a placeholder text -->
+        </div>
+        <div class="form-group">
+            <label for="category">Kategori</label>
+            <select id="category" name="category" class="form-control">
+                <option value="Featured">Udvalgt spil</option>
+                <option value="New">Nyt spil</option>
+                <!-- Add more categories as needed -->
+            </select>
+            <!-- Select element for choosing a category for the game -->
+        </div>
+        <div class="form-group">
+            <label for="UploadedImage">Upload Billede</label>
+            <input type="file" id="UploadedImage" name="UploadedImage" accept="image/*" class="form-control-file" />
+            <!-- Input field for uploading a game image, accepts image files only -->
+        </div>
+        <div class="form-group">
+            <label for="playUrl">Spil Link/URL</label>
+            <input type="text" id="playUrl" name="playUrl" required placeholder="Indtast spil link/URL her" class="form-control" />
+            <!-- Input field for the play URL, required, and has a placeholder text -->
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Spil</button>
+    </form>
 </div>

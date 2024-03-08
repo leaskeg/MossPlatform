@@ -18,13 +18,6 @@
                         <h5 class="card-title">@game.Title</h5>
                         <p class="card-text">@game.Description</p>
                         <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
-                        @if (isAdmin)
-                        {
-                            <form method="post" asp-page-handler="Delete" asp-route-id="@game.Id">
-                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
-                            </form>
-                            <a href="@Url.Page("Edit", new { id = game.Id })" class="btn btn-secondary mt-2">Edit</a>
-                        }
                     </div>
                 </div>
             </div>
@@ -42,16 +35,19 @@
                         <h5 class="card-title">@game.Title</h5>
                         <p class="card-text">@game.Description</p>
                         <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
-                        @if (isAdmin)
-                        {
-                            <form method="post" asp-page-handler="Delete" asp-route-id="@game.Id">
-                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
-                            </form>
-                            <a href="@Url.Page("Edit", new { id = game.Id })" class="btn btn-secondary mt-2">Edit</a>
-                        }
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+
+<script>
+    (function() {
+        const theme = localStorage.getItem('theme') || 'light-mode'; // Default to light mode if no preference is saved
+        const isDarkMode = theme === 'dark-mode';
+        document.body.classList.add(isDarkMode ? 'dark-mode' : 'light-mode');
+        // Set attributes directly on the body to avoid FOUC
+        document.body.style.display = 'none'; // Hide the body to prevent FOUC
+    })();
+</script>

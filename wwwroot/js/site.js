@@ -1,61 +1,48 @@
-﻿function loadGame(gameUrl) {
-    // Get the iframe element and the container
+﻿// Load a game into an iframe
+function loadGame(gameUrl) {
     var iframe = document.getElementById('gameFrame');
     var container = document.getElementById('gameContainer');
 
-    // Set the game URL as the src of the iframe
     iframe.src = gameUrl;
-
-    // Show the container
     container.style.display = 'block';
 }
 
-// Dark mode section
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const logoImage = document.getElementById('logo-image'); // Get the logo image element
+// Function to initialize or apply the dark/light theme
+function applyTheme(theme) {
+    const bodyClassList = document.body.classList;
+    const logoImage = document.getElementById('logo-image');
     const lightModeIcon = document.getElementById('light-mode-icon');
     const darkModeIcon = document.getElementById('dark-mode-icon');
-    const currentTheme = localStorage.getItem('theme') || 'light'; // Default to light mode
+    const DARK_MODE = 'dark-mode';
+    const LIGHT_MODE = 'light-mode';
 
-    // Function to update logo based on theme
-    function updateLogo(theme) {
-        if (theme === 'dark') {
-            logoImage.src = '/css/Resources/Images/DORFhvid.png'; // Update this path
-        } else {
-            logoImage.src = '/css/Resources/Images/DORFgrøn.png'; // Update this path
-        }
-    }
+    const isDarkMode = theme === DARK_MODE;
+    bodyClassList.add(isDarkMode ? DARK_MODE : LIGHT_MODE);
+    bodyClassList.remove(isDarkMode ? LIGHT_MODE : DARK_MODE);
 
-    // Apply the initial theme, icon, and logo
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        lightModeIcon.style.display = 'block';
-        darkModeIcon.style.display = 'none';
-        updateLogo('dark');
-    } else {
-        document.body.classList.add('light-mode');
-        lightModeIcon.style.display = 'none';
-        darkModeIcon.style.display = 'block';
-        updateLogo('light');
-    }
+    lightModeIcon.style.display = isDarkMode ? 'block' : 'none';
+    darkModeIcon.style.display = isDarkMode ? 'none' : 'block';
+
+    logoImage.src = isDarkMode ? '/css/Resources/Images/DORFhvid.png' : '/css/Resources/Images/DORFgrøn.png';
+    localStorage.setItem('theme', theme);
+}
+
+// Function to handle theme switching
+function setupThemeToggleButton() {
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light-mode'; // Default to light mode if no preference is saved
+
+    applyTheme(currentTheme); // Apply the initial theme
 
     themeToggleButton.addEventListener('click', () => {
-        if (document.body.classList.contains('dark-mode')) {
-            document.body.classList.replace('dark-mode', 'light-mode');
-            lightModeIcon.style.display = 'none';
-            darkModeIcon.style.display = 'block';
-            updateLogo('light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.body.classList.replace('light-mode', 'dark-mode');
-            lightModeIcon.style.display = 'block';
-            darkModeIcon.style.display = 'none';
-            updateLogo('dark');
-            localStorage.setItem('theme', 'dark');
-        }
+        const newTheme = document.body.classList.contains('dark-mode') ? 'light-mode' : 'dark-mode';
+        applyTheme(newTheme);
     });
-});
+}
 
+// Set up everything after the DOM has loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    setupThemeToggleButton();
+    document.body.style.display = ''; // Show the body after everything is set up
+});
 

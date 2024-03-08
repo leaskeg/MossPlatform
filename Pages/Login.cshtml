@@ -11,8 +11,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script>
+        (function () {
+            // Immediately set the theme based on user preference
+            const theme = localStorage.getItem('theme') || 'light-mode'; // Default to light mode
+            document.body.className = theme;
+
+            // Hide body to prevent FOUC
+            document.body.style.display = 'none';
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -36,3 +46,9 @@
 
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Make the body visible again after the theme has been applied
+        document.body.style.display = '';
+    });
+</script>

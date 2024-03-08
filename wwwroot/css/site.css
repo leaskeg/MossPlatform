@@ -1,4 +1,180 @@
-/* Base styles */
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto',sans-serif;
+}
+
+.container {
+    flex: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+::selection {
+    background: rgba(26,188,156,0.3);
+}
+
+/* Login Page Styles */
+.wrapper {
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+}
+
+    .wrapper .title {
+        height: 90px;
+        background: #84894A;
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrapper form {
+        padding: 30px 25px 25px 25px;
+    }
+
+        .wrapper form .row {
+            height: 45px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+            .wrapper form .row input {
+                height: 100%;
+                width: 100%;
+                outline: none;
+                padding-left: 60px;
+                border-radius: 5px;
+                border: 1px solid lightgrey;
+                font-size: 16px;
+                transition: all 0.3s ease;
+            }
+
+                .wrapper form .row input:focus {
+                    border-color: #84894A;
+                    box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+                }
+
+                .wrapper form .row input::placeholder {
+                    color: #999;
+                }
+
+            .wrapper form .row i {
+                position: absolute;
+                width: 47px;
+                height: 100%;
+                color: #fff;
+                font-size: 18px;
+                background: #84894A;
+                border: 1px solid lightgrey;
+                border-radius: 5px 0 0 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        .wrapper form .pass {
+            margin: -8px 0 20px 0;
+        }
+
+            .wrapper form .pass a {
+                color: #84894A;
+                font-size: 17px;
+                text-decoration: none;
+            }
+
+                .wrapper form .pass a:hover {
+                    text-decoration: underline;
+                }
+
+        .wrapper form .button input {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            padding-left: 0px;
+            background: #84894A;
+            border: 1px solid lightgrey;
+            cursor: pointer;
+        }
+
+            .wrapper form .button input:hover {
+                background: #5D612C;
+            }
+
+        .wrapper form .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 17px;
+        }
+
+            .wrapper form .signup-link a {
+                color: lightgrey;
+                text-decoration: none;
+            }
+
+                .wrapper form .signup-link a:hover {
+                    text-decoration: underline;
+                }
+
+/* Dark Mode Styles for Login Form */
+body.dark-mode {
+    background: #121212; /* Dark background for dark mode */
+    color: #ffffff; /* Light text for better readability */
+}
+
+    body.dark-mode .container {
+        background-color: #212529; /* Darker background for the container */
+    }
+
+    body.dark-mode .wrapper {
+        background-color: #242424; /* Dark background for the form wrapper */
+        color: #ffffff; /* Light text color for readability */
+    }
+
+        body.dark-mode .wrapper .title {
+            background-color: #414141; /* Darker background for the title */
+            color: #ffffff; /* Light text color */
+        }
+
+        body.dark-mode .wrapper form .row input {
+            color: #ffffff; /* Light text color for the input */
+            border: 1px solid #555; /* Darker border for the input fields */
+        }
+
+        body.dark-mode .wrapper form .row i {
+            background-color: #414141; /* Dark background for input icons */
+            border-color: #555; /* Darker border for the icons */
+        }
+
+        body.dark-mode .wrapper form .button input {
+            background-color: #5a5a5a; /* Dark background for the submit button */
+            color: #ffffff; /* Light text color for the button */
+            border-color: #777; /* Darker border for the button */
+        }
+
+            body.dark-mode .wrapper form .button input:hover {
+                background-color: #484848; /* Lighter background for the button on hover */
+            }
+
+/* Site-Wide Styles */
 html {
     font-size: 14px; /* Initial font size */
     position: relative;
@@ -70,13 +246,21 @@ body.dark-mode .btn-link.text-light {
         }
 
 body.dark-mode .card,
-body.dark-mode .card .btn {
+body.dark-mode .card {
     background-color: #212529; /* White background in dark mode */
-    color: white; /* Black text in dark mode */
+    color: #ffffff;
     border-color: white; /* Black border in dark mode */
-    font-weight: bold;
 }
 
+    body.dark-mode .card .btn {
+        background-color: #5A5A5A;
+        color: #ffffff;
+        border-color: lightgrey;
+    }
+
+        body.dark-mode .card .btn:hover {
+            background-color: #484848;
+        }
 /* Responsive and Game Card Styles */
 .game-card {
     display: flex;
@@ -165,4 +349,27 @@ body.light-mode, .light-mode .navbar, .light-mode .footer, .light-mode .navbar-b
 }
 
 
-/* Disable Background on Login page*/
+/* Footer styles */
+
+.footer {
+    padding: 10px 0; /* Reduces padding to decrease height */
+    font-size: 14px; /* Adjusts font size for better fit */
+    text-align: center; /* Ensures content is centered */
+    color: #6c757d; /* Adjusts text color if needed, matches 'text-muted' class */
+}
+
+    .footer .container {
+        max-width: 1140px; /* Adjust if needed based on your design */
+        margin: auto;
+        text-align: center; /* Ensures any content within the container is centered */
+    }
+
+
+.same-color-background {
+    background-color: #f8f9fa; /* Adjust the background color as needed */
+}
+
+/* Ensure the footer doesn't take up more space than necessary */
+.footer, .footer * {
+    box-sizing: border-box;
+}

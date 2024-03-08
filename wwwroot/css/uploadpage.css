@@ -1,11 +1,15 @@
-﻿.upload-form-container {
+﻿.light-mode .upload-form-container {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa;
+    box-shadow: 0 0 10px darkgrey;
 }
-
+.dark-mode .upload-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px #333;
+}
 .upload-form {
     display: flex;
     flex-direction: column;
@@ -28,23 +32,23 @@
     box-sizing: border-box;
 }
 
-.form-control-file {
-    border: none;
-}
 
+/* Light mode styles for primary button */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
+    background-color: #84894A; /* Changed to white for light mode */
+    border-color: darkgray; /* Keeping the border color for contrast */
+    color: #fff; /* Changed text color for readability */
     padding: 10px 15px;
     border-radius: 4px;
     cursor: pointer;
 }
 
+    /* Light mode styles for primary button on hover */
     .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background-color: #5D612C; /* Light gray on hover for feedback */
+        border-color: black; /* Darkened border on hover for contrast */
     }
+
 /* Dark mode styles */
 body.dark-mode .upload-form-container {
     background-color: #343a40; /* Darker background for the form */
@@ -57,11 +61,15 @@ body.dark-mode .form-control, body.dark-mode .form-control-file {
     border-color: #6c757d; /* Darker borders for inputs */
 }
 
+/* Dark mode styles for primary button */
 body.dark-mode .btn-primary {
-    background-color: #28A745; /* Darker background for primary buttons */
-    border-color: #ffffff; /* Consistent border color */
+    background-color: #5A5A5A; /* Changed to white for dark mode */
+    border-color: lightgrey;
+    color: #fff;
 }
 
+    /* Dark mode styles for primary button on hover */
     body.dark-mode .btn-primary:hover {
-        background-color: #0d6e23; /* Slightly lighter on hover for feedback */
+        background-color: #484848;
+        border-color: #6c757d;
     }

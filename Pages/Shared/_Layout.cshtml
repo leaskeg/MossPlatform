@@ -6,7 +6,26 @@
     <title>@ViewData["Title"] - MossPlatform</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Direct script for immediate theme application without waiting for DOMContentLoaded
+        const theme = localStorage.getItem('theme') || 'light-mode';
+        document.body.className = theme; // Apply class immediately before full DOM is ready
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const lightModeIcon = document.getElementById('light-mode-icon');
+            const darkModeIcon = document.getElementById('dark-mode-icon');
+            if (theme === 'dark-mode') {
+                lightModeIcon.style.display = 'none';
+                darkModeIcon.style.display = 'block';
+            } else {
+                lightModeIcon.style.display = 'block';
+                darkModeIcon.style.display = 'none';
+            }
+        });
+    </script>
+
+    </script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
@@ -25,16 +44,19 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">Forside</a>
                         </li>
+
                         @if (Context.Session.GetString("IsAdminLoggedIn") == "true")
                         {
                             <li class="nav-item">
-                                <a class="btn btn-success nav-link" asp-page="/Upload">Upload</a>
+                                <a class="nav-link" asp-page="/Upload">Upload</a>
                             </li>
                             <li class="nav-item">
-                                <form method="post" asp-page="/Logout">
-                                    <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                                <form id="logoutForm" method="post" asp-page="/Logout" style="display: none;">
+                                    <!-- A hidden form for logout -->
                                 </form>
+                                <a href="#" class="nav-link" onclick="document.getElementById('logoutForm').submit(); return false;">Logout</a>
                             </li>
+
                         }
                         else
                         {
@@ -56,7 +78,7 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted same-color-background">
+    <footer class="border-top footer">
         <div class="container">
             &copy; 2024 - MossPlatform
         </div>
