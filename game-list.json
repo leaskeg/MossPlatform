@@ -1,29 +1,3 @@
 [
-  {
-    "Id": "fa3b4c7c-42a5-4ee7-b69a-2e519b33d0c3",
-    "Title": "Starlight Voyagers",
-    "Description": "Embark on an epic journey across the cosmos in Starlight Voyagers, a captivating space exploration adventure game.",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": "/uploads/Starlight_Voyagers_1709707570.png",
-    "PlayUrl": "23421"
-  },
-  {
-    "Id": "53101678-22b0-42b0-a9d6-d099a64d47d1",
-    "Title": "Mystic Forest: Enchantment\u0027s Quest",
-    "Description": "Dive into the magical world of Mystic Forest: Enchantment\u0027s Quest, a captivating fantasy adventure game. ",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": "/uploads/Mystic_Forest_Enchantment\u0027s_Quest_1709707625.png",
-    "PlayUrl": "weaeaw"
-  },
-  {
-    "Id": "4d1dbd6b-44a3-43ef-b58e-204119ac4fe4",
-    "Title": "Alis",
-    "Description": "Bach",
-    "Category": "Featured",
-    "CategoryEnum": 0,
-    "ImageUrl": "/uploads/Alis_1709890533.png",
-    "PlayUrl": "241412421142"
-  }
+
 ]

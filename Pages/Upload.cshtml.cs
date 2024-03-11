@@ -53,9 +53,21 @@ namespace MossPlatform.Pages
                 _logger.LogWarning("No image uploaded for game: {Title}", NewGame.Title);
             }
 
-            // Continue with the rest of the method (saving the game, handling other errors, etc.)
+            // Convert the Category string to the GameCategory enum
+            if (Enum.TryParse<GameCategory>(NewGame.Category, true, out var categoryEnum))
+            {
+                NewGame.CategoryEnum = categoryEnum; // Assign the parsed enum to the CategoryEnum property
+            }
+            else
+            {
+                _logger.LogWarning("Invalid category value for game: {Title}", NewGame.Title);
+                ModelState.AddModelError(string.Empty, "Invalid category selection.");
+                return Page();
+            }
+
             try
             {
+                // Save the new game using the GameDataService
                 var games = await _gameDataService.GetGamesAsync();
                 games.Add(NewGame);
                 await _gameDataService.SaveGamesAsync(games);
