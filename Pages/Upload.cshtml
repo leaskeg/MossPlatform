@@ -1,5 +1,5 @@
-﻿@page // This line indicates that this is an ASP.NET Core Razor Page
-@model MossPlatform.Pages.UploadModel // The model for this page is of type UploadModel
+﻿@page
+@model MossPlatform.Pages.UploadModel
 <head>
     <link rel="stylesheet" href="~/css/uploadpage.css" />
     <script>
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="description">Beskrivelse</label>
-            <textarea id="description" name="description" placeholder="Skriv beskrivelse her" class="form-control"></textarea>
+            <textarea id="description" name="description" placeholder="Skriv beskrivelse her" class="form-control" maxlength="114"></textarea>
             <!-- Textarea for the game description, has a placeholder text -->
         </div>
         <div class="form-group">

@@ -155,7 +155,7 @@ body.dark-mode {
         }
 
         body.dark-mode .wrapper form .row input {
-            color: #ffffff; /* Light text color for the input */
+            color: #333; /* Light text color for the input */
             border: 1px solid #555; /* Darker border for the input fields */
         }
 
@@ -166,7 +166,7 @@ body.dark-mode {
 
         body.dark-mode .wrapper form .button input {
             background-color: #5a5a5a; /* Dark background for the submit button */
-            color: #ffffff; /* Light text color for the button */
+            color: #fff; /* Light text color for the button */
             border-color: #777; /* Darker border for the button */
         }
 
@@ -282,6 +282,7 @@ body.dark-mode .card {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Theme Toggle, Images, and Text Styles */
@@ -313,6 +314,7 @@ body.dark-mode, .dark-mode .footer, .dark-mode .navbar, .dark-mode .navbar-nav .
     color: #ffffff; /* Ensuring readability and consistency in dark mode */
 }
 
+
 .dark-mode #theme-toggle {
     color: #ffffff;
     background-color: rgba(255, 255, 255, 0.1);
@@ -339,6 +341,12 @@ body.light-mode, .light-mode .navbar, .light-mode .footer, .light-mode .navbar-b
 .light-mode .navbar-nav .nav-link:hover {
     color: black;
     background-color: transparent;
+}
+
+.light-mode #theme-toggle {
+    color: #333;
+    background-color: lightgrey;
+    border: 1px solid black;
 }
 
 /* Navbar Logo Adjustments */
