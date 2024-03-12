@@ -26,6 +26,7 @@ namespace MossPlatform.Pages
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
 
+
         // Handles the form submission (POST request)
         public async Task<IActionResult> OnPostAsync()
         {
