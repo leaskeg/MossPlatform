@@ -344,8 +344,8 @@ body.light-mode, .light-mode .navbar, .light-mode .footer, .light-mode .navbar-b
 }
 
 .light-mode #theme-toggle {
-    color: #333;
-    background-color: lightgrey;
+    color: black    ;
+    background-color: #84894A;
     border: 1px solid black;
 }
 
