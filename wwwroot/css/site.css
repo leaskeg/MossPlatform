@@ -293,7 +293,8 @@ body.dark-mode .card {
 
 .card-img-top {
     height: auto;
-    max-height: 180px;
+    min-height: 140px;
+    max-height: 140px;
     object-fit: cover;
 }
 
