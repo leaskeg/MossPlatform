@@ -339,6 +339,11 @@ body.light-mode, .light-mode .navbar, .light-mode .footer, .light-mode .navbar-b
     border-color: black;
 }
 
+.light-mode .navbar-toggler {
+    background-color: #84894A; /* Light background for light mode */
+    
+}
+
 .light-mode .navbar-nav .nav-link:hover {
     color: black;
     background-color: transparent;
