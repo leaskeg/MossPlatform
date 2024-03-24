@@ -1,0 +1,38 @@
+﻿@page "/EditGame/{Id}"
+@model MossPlatform.Pages.EditGameModel
+
+<h2>Edit Game</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Game.Id" />
+
+    <div class="form-group">
+        <label asp-for="Game.Title">Titel</label>
+        <input asp-for="Game.Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Game.Description">Beskrivelse</label>
+        <textarea asp-for="Game.Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Game.CategoryEnum">Kategori</label>
+        <select asp-for="Game.CategoryEnum" class="form-control">
+            <option value="Featured">Featured</option>
+            <option value="New">New</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Game.ImageUrl">Upload Billede</label>
+        <input asp-for="Game.ImageUrl" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Game.PlayUrl">Spil Link/URL</label>
+        <input asp-for="Game.PlayUrl" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

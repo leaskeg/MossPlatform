@@ -3,7 +3,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
-    bool isAdmin = User.IsInRole("Admin");
+    bool isAdmin = User.IsInRole("admin");
 }
 <!-- Featured games section-->
 <div class="container mt-5">
@@ -17,7 +17,15 @@
                     <div class="card-body">
                         <h5 class="card-title">@game.Title</h5>
                         <p class="card-text">@game.Description</p>
-                        <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
+                        <a href="/GamePage?gameUrl=@Uri.EscapeDataString(game.PlayUrl)" class="btn btn-primary" target="_blank">Spil nu</a>
+                        @if (HttpContext.Session.GetString("IsAdminLoggedIn") == "true")
+                        {
+                            <a class="btn-warning mt-2" asp-page="/EditGame" asp-route-id="@game.Id">Edit</a>
+                            <form method="post" asp-page-handler="DeleteGame" asp-route-id="@game.Id" style="display: inline;">
+                                <button type="submit" class="btn-danger mt-2">Delete</button>
+                            </form>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -34,7 +42,15 @@
                     <div class="card-body">
                         <h5 class="card-title">@game.Title</h5>
                         <p class="card-text">@game.Description</p>
-                        <a href="@game.PlayUrl" class="btn btn-primary" target="_blank">Spil nu</a>
+                        <a href="/GamePage?gameUrl=@Uri.EscapeDataString(game.PlayUrl)" class="btn btn-primary" target="_blank">Spil nu</a>
+                        @if (HttpContext.Session.GetString("IsAdminLoggedIn") == "true")
+                        {
+                            <a class="btn-warning mt-2" asp-page="/EditGame" asp-route-id="@game.Id">Edit</a>
+                            <form method="post" asp-page-handler="DeleteGame" asp-route-id="@game.Id" style="display: inline;">
+                                <button type="submit" class="btn-danger mt-2">Delete</button>
+                            </form>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -43,11 +59,30 @@
 </div>
 
 <script>
-    (function() {
+    (function () {
         const theme = localStorage.getItem('theme') || 'light-mode'; // Default to light mode if no preference is saved
         const isDarkMode = theme === 'dark-mode';
         document.body.classList.add(isDarkMode ? 'dark-mode' : 'light-mode');
         // Set attributes directly on the body to avoid FOUC
         document.body.style.display = 'none'; // Hide the body to prevent FOUC
     })();
+
+    function deleteGame(gameId) {
+        if (confirm('Are you sure you want to delete this game?')) {
+            // Implement AJAX request to backend endpoint to delete the game
+            fetch(`/DeleteGame/${gameId}`, {
+                method: 'DELETE',
+            }).then(response => {
+                if (response.ok) {
+                    alert('Game deleted successfully');
+                    window.location.reload(); // Refresh the page to update the list
+                } else {
+                    alert('Failed to delete the game');
+                }
+            }).catch(error => {
+                console.error('Error deleting game:', error);
+                alert('An error occurred while deleting the game');
+            });
+        }
+    }
 </script>
